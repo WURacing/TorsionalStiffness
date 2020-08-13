@@ -1,6 +1,6 @@
 
 % Runs simulation once and plots displacement
-
+% Test edit
 % Solve for displacments
 FrameData = GeometryAndLoading_2020FinalFrame;
 [~,V,~] = DirectStiffnessSolver(FrameData);
