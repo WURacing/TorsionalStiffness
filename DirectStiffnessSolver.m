@@ -2,6 +2,10 @@
 % Back-end displacement solver. Need to understand before competition.
 
 function [Q,V,R]=DirectStiffnessSolver(D)
+%Arguments are Frame(D)
+%m = members/tubes
+%n = nodes
+
 m=D.m;
 n=D.n;
 Ni=zeros(12,12,m);
