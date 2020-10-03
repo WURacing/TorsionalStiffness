@@ -2,7 +2,14 @@ function D = GeometryAndLoading_2020FinalFrame
 % Definition of Data
 
 % Number of members and nodes
-m = 150; n = 73;
+%m = 150; n = 73;
+Coord = readmatrix('NodeMatrix.xlsx')
+n = size(Coord,1)
+disp(n)
+
+Con = readmatrix('ConnectivityMatrix.xlsx')
+m = size(Con,1)
+disp(m)
 
 % Nodal Coordinates
 %{
@@ -64,6 +71,12 @@ Coord=[17.8519	-6.9285	4.8199 %1
 105.5721	9.05647	10.9688%56
 ];
 %}
+
+
+
+
+%{
+CORRECT ONE
 Coord = [17.016	-7.472	17.675
 17.016	7.472	17.675
 17.016	-7.472	5.3
@@ -138,6 +151,8 @@ Coord = [17.016	-7.472	17.675
 46.381	1.879	24
 47.941	0	18.282
 ];
+%}
+
 % Connectivity (Organized in rows of 10)
 %{
 Con = [1 2 1 1%1
@@ -280,6 +295,9 @@ Con = [1 2 1 1%1
     44 46 1 1%138
     45 46 1 1];%139
 %}
+
+%{
+THIS IS THE CORRECT ONE!!
 Con = [1	3	1	1
 2	4	1	1
 1	2	1	1
@@ -431,7 +449,13 @@ Con = [1	3	1	1
 61	60	1	1
 59	60	1	1
 ];
+%}
+
 % Definition of Degree of freedom (free=0 &  fixed=1) (Organized in rows of 10)
+
+Re = readmatrix('DegreeOfFreedomMatrix_ForEdits.xlsx')
+%{
+19-20 CORRECT ONE
 Re= [0 0 0 0 0 0;0 0 0 0 0 0;0 0 0 0 0 0;0 0 0 0 0 0;0 0 0 0 0 0;0 0 0 0 0 0;0 0 0 0 0 0;0 0 0 0 0 0;0 0 0 0 0 0;0 0 0 0 0 0;
      0 0 0 0 0 0;0 0 0 0 0 0;0 0 0 0 0 0;0 0 0 0 0 0;0 0 0 0 0 0;0 0 0 0 0 0;0 0 0 0 0 0;0 0 0 0 0 0;0 0 0 0 0 0;0 0 0 0 0 0;
      0 0 0 0 0 0;0 0 0 0 0 0;0 0 0 0 0 0;0 0 0 0 0 0;0 0 0 0 0 0;0 0 0 0 0 0;0 0 0 0 0 0;0 0 0 0 0 0;0 0 0 0 0 0;0 0 0 0 0 0;
@@ -441,8 +465,11 @@ Re= [0 0 0 0 0 0;0 0 0 0 0 0;0 0 0 0 0 0;0 0 0 0 0 0;0 0 0 0 0 0;0 0 0 0 0 0;0 0
      0 0 0 0 0 0;0 0 0 0 0 0;0 0 0 0 0 0;0 0 0 0 0 0;0 0 0 0 0 0;0 0 0 0 0 0;0 0 0 0 0 0;0 0 0 0 0 0;0 0 0 0 0 0;0 0 0 0 0 0;
      0 0 0 0 0 0;0 0 0 0 0 0;0 0 0 0 0 0;];
      
+%}
+
 % Definition of Point Loads (Load) and Distributed Loads (w) (Organized in rows of 10)
 nodeLoad = 250;
+Load = readmatrix('NodeLoadMatrix_ForEdits.xlsx')
 %{
 Load= [0 0 0 0 0 0;0 0 0 0 0 0;0 0 0 0 0 0;0 0 0 0 0 0;0 0 nodeLoad 0 0 0;0 0 -nodeLoad 0 0 0;0 0 nodeLoad 0 0 0;0 0 -nodeLoad 0 0 0;0 0 0 0 0 0;0 0 0 0 0 0;
        0 0 0 0 0 0;0 0 0 0 0 0;0 0 0 0 0 0;0 0 nodeLoad 0 0 0;0 0 -nodeLoad 0 0 0;0 0 nodeLoad 0 0 0;0 0 -nodeLoad 0 0 0;0 0 0 0 0 0;0 0 0 0 0 0;0 0 0 0 0 0;
@@ -451,6 +478,9 @@ Load= [0 0 0 0 0 0;0 0 0 0 0 0;0 0 0 0 0 0;0 0 0 0 0 0;0 0 nodeLoad 0 0 0;0 0 -n
        0 0 0 0 0 0;0 0 0 0 0 0;0 0 0 0 0 0;0 0 0 0 0 0;0 0 0 0 0 0;0 0 0 0 0 0;0 0 0 0 0 0;0 0 0 0 0 0;0 0 0 0 0 0;0 0 0 0 0 0;
        0 0 0 0 0 0;0 0 0 0 0 0;0 0 0 0 0 0;0 0 0 0 0 0;0 0 0 0 0 0;0 0 0 0 0 0;];  
 %} 
+%{
+19-20 CORRECT ONE
+nodeLoad = 250;
 Load= [0 0 0 0 0 0;0 0 0 0 0 0;0 0 0 0 0 0;0 0 0 0 0 0;0 0 nodeLoad 0 0 0;0 0 -nodeLoad 0 0 0;0 0 nodeLoad 0 0 0;0 0 -nodeLoad 0 0 0;0 0 nodeLoad 0 0 0;0 0 -nodeLoad 0 0 0;
      0 0 nodeLoad 0 0 0;0 0 -nodeLoad 0 0 0;0 0 0 0 0 0;0 0 0 0 0 0;0 0 0 0 0 0;0 0 0 0 0 0;0 0 0 0 0 0;0 0 0 0 0 0;0 0 0 0 0 0;0 0 0 0 0 0;
      0 0 0 0 0 0;0 0 0 0 0 0;0 0 0 0 0 0;0 0 0 0 0 0;0 0 0 0 0 0;0 0 0 0 0 0;0 0 0 0 0 0;0 0 0 0 0 0;0 0 0 0 0 0;0 0 0 0 0 0;
@@ -459,6 +489,8 @@ Load= [0 0 0 0 0 0;0 0 0 0 0 0;0 0 0 0 0 0;0 0 0 0 0 0;0 0 nodeLoad 0 0 0;0 0 -n
      0 0 0 0 0 0;0 0 0 0 0 0;0 0 0 0 0 0;0 0 0 0 0 0;0 0 0 0 0 0;0 0 0 0 0 0;0 0 0 0 0 0;0 0 0 0 0 0;0 0 0 0 0 0;0 0 0 0 0 0;
      0 0 0 0 0 0;0 0 0 0 0 0;0 0 0 0 0 0;0 0 0 0 0 0;0 0 0 0 0 0;0 0 0 0 0 0;0 0 0 0 0 0;0 0 0 0 0 0;0 0 0 0 0 0;0 0 0 0 0 0;
      0 0 0 0 0 0;0 0 0 0 0 0;0 0 0 0 0 0;];
+%}
+
 w = zeros(size(Con,1),3); 
 
 % Definition of Modulus of Elasticity and Shear Modulus
@@ -530,6 +562,8 @@ A =[SQ1x49	SQ1x49	SQ1x49	SQ1x49	RD1x65	RD1x65	RD1x49	RD1x49	RD1x49	RD1x49...
     RD1xSD	RD1xSD	RD1xSD	RD1xSD	RD1xSD	RD1xSD	RD1xSD	RD1xSD	RD1xSD	RD1xSD];
 
 %}
+% Definition of Area (Organized in rows of 10)
+
 A =[SQ1x49	SQ1x49	SQ1x49	SQ1x49	RD1x65	RD1x65	RD1x49	RD1x49	RD1x49	RD1x49...
     RD1x49	RD1x49	RD1x49	RD1x49	RD1x49	RD1x49	RD1x49	RD1x49	RD1x49	RD1x49...
     RD1x49	RD1x49	RD1x49	RD1x49	RD1x35	RD1x35	RD1x35	RD1x35	RD1x49	RD1x49...
@@ -545,6 +579,25 @@ A =[SQ1x49	SQ1x49	SQ1x49	SQ1x49	RD1x65	RD1x65	RD1x49	RD1x49	RD1x49	RD1x49...
     RD625x49 RD75x35 RD75x35 RD1x49	RD1x49	RD1x49	RD1x49	SQ1x35	SQ1x35	RD5x28...
     RD5x28	RD5x28	RD5x28	RD375x28 RD375x28 RD1xSD RD1xSD	RD1xSD	RD1xSD	RD1xSD...
     RD1xSD	RD1xSD	RD1xSD	RD1xSD	RD1xSD	RD1xSD	RD1xSD	RD1xSD	RD1xSD	RD1xSD];
+%{
+19-20 CORRECT VERSION
+A =[SQ1x49	SQ1x49	SQ1x49	SQ1x49	RD1x65	RD1x65	RD1x49	RD1x49	RD1x49	RD1x49...
+    RD1x49	RD1x49	RD1x49	RD1x49	RD1x49	RD1x49	RD1x49	RD1x49	RD1x49	RD1x49...
+    RD1x49	RD1x49	RD1x49	RD1x49	RD1x35	RD1x35	RD1x35	RD1x35	RD1x49	RD1x49...
+    RD1x95	RD1x95	RD1x95	RD1x95	RD1x95	RD1x95	RD1x95	RD1x95	RD1x95	RD75x28...
+    RD75x28	RD1x65	RD1x65	RD1x65	RD1x65	RD1x65	RD1x65	RD1x65	RD1x65	RD1x65...
+    RD1x65	RD1x95	RD1x95	RD1x95	RD1x95	RD1x95	RD1x95	RD1x95	RD1x95	RD75x35...
+    RD75x35	RD75x35	RD75x35	SQ625x35 SQ625x35 SQ1x35 SQ1x35	RD625x28 RD1x49 RD1x49...
+    RD625x28 RD625x28 RD1x49 RD1x49	RD1x65 RD1x65 RD1x35 RD1x35	RD1x49	RD1x49...
+    RD1x49	RD1x49	RD1x95	RD1x95	RD1x95	RD1x95 RD1x95 RD625x49 RD625x49 RD75x35...
+    RD75x35	RD75x35	RD75x35	RD625x49 RD625x49 RD75x49 RD75x49 RD625x49	RD5x49	RD1x35...
+    RD75x35	RD75x35	RD1x49	RD1x49	RD1x49	RD1x49	RD1x35	RD1x35	RD625x35 RD625x35...
+    RD1x35	RD1x35	RD1x35	RD1x35	RD5x35	RD5x35	RE1x15x65 RE1x15x65	RE1x15x65 RD625x49...
+    RD625x49 RD75x35 RD75x35 RD1x49	RD1x49	RD1x49	RD1x49	SQ1x35	SQ1x35	RD5x28...
+    RD5x28	RD5x28	RD5x28	RD375x28 RD375x28 RD1xSD RD1xSD	RD1xSD	RD1xSD	RD1xSD...
+    RD1xSD	RD1xSD	RD1xSD	RD1xSD	RD1xSD	RD1xSD	RD1xSD	RD1xSD	RD1xSD	RD1xSD];
+%}
+
 
 % DONT CHANGE ANYTHING BELOW THIS POINT
 %--------------------------------------

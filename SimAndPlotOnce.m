@@ -1,7 +1,6 @@
-
 % Runs simulation once and plots displacement
 % Solve for displacments
-FrameData = GeometryAndLoading_2020FinalFrame;
+FrameData = GeometryAndLoading_2020FinalFrame; %this is what actually specifies the frame
 [~,V,~] = DirectStiffnessSolver(FrameData);
 TS = GetTorsionalStiffness(FrameData);
 Weight = GetWeight(FrameData);
@@ -11,5 +10,7 @@ fprintf("Weight:\t\t\t\t\t"+Weight+" lbs\n\n");
 
 % Plot displacement
 scaleFactor = 10;
-%PlotDisplacement(FrameData,V,scaleFactor, true, true);
+PlotDisplacement(FrameData,V,scaleFactor, true, true);
+
+
 
